@@ -1,0 +1,22 @@
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .logo-container {
+    text-align: center;
+  }
+  
+  .centered-image {
+    display: block;
+    margin: 20px auto; /* Ajusta el margen para centrar la imagen y despegarla de los lados */
+    max-width: 80%; /* Ajusta el ancho máximo de la imagen */
+  }
+
+  .large-spinner {
+    width: 50px; /* Ajusta el ancho del spinner */
+    height: 50px; /* Ajusta la altura del spinner */
+    margin-top: 20px; /* Añade un margen superior para separar el spinner de otros elementos */
+  }

@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Datos del Usuario:</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/uprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <h1>Únete a un Viaje</h1>
+      </ion-card-title>
+      <ion-card-subtitle class="ion-text-center">
+        Ingresa el código QR o escanéalo para unirte a un viaje
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- Formulario manual para ingresar el código QR -->
+      <ion-item>
+        <ion-icon slot="start" name="keypad-outline"></ion-icon>
+        <ion-input [(ngModel)]="manualQR" placeholder="Ingresa el código QR" type="text" class="ion-margin-bottom"></ion-input>
+      </ion-item>
+
+      <!-- Botón para unirse al viaje -->
+      <ion-button expand="full" (click)="onSubmitManualQR()" shape="round" class="ion-margin-top">
+        <ion-icon slot="start" name="boat-outline"></ion-icon>
+        Unirse al viaje
+      </ion-button>
+
+      <!-- Botón para abrir la cámara y escanear el código QR -->
+      <ion-button expand="full" (click)="openCamera()" shape="round" class="ion-margin-top">
+        <ion-icon slot="start" name="camera-outline"></ion-icon>
+        Escanear Código QR
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

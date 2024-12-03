@@ -1,0 +1,45 @@
+ion-label {
+    margin-left: 20px;
+}
+
+.header-content {
+  text-align: center;
+  margin: 20px 0;
+}
+
+ion-card {
+  margin: 10px;
+}
+
+ion-card-header {
+  font-size: 1.5em; /* Ajusta el tamaño de la fuente del título del equipo */
+}
+
+ion-card-title {
+  font-size: 1.5em; /* Ajusta el tamaño de la fuente del título del equipo */
+  font-weight: bold; /* Opcional: Haz el texto en negrita */
+  flex: 1; /* Asegura que el título ocupe todo el espacio disponible */
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between; /* Asegura que el contenido se distribuya entre el texto y la imagen */
+  align-items: center;
+}
+
+.image-container {
+  width: 60px; /* Ajusta el tamaño según tus necesidades */
+  height: 60px; /* Ajusta el tamaño según tus necesidades */
+  overflow: hidden; /* Asegura que la imagen no se salga del contenedor */
+  margin-left: 15px; /* Añade un margen a la izquierda para separar la imagen del texto */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+}
+
+ion-fab-button {
+  --ion-color-primary: #3880ff;
+}

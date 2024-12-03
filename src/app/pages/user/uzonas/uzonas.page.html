@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Zonas de Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar destinos creados por el conductor -->
+  <ion-card *ngFor="let destino of destinos" lines="none" class="ion-no-margin">
+    <ion-card-header>
+      <ion-card-title class="ion-text-wrap">{{ destino.nombreFin }}</ion-card-title>
+      <p class="ion-no-margin">Inicio: {{ destino.nombreInicio }} | Asientos: {{ destino.asientosDisponibles }}</p>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-button (click)="tomarViaje(destino)" expand="full" size="small">
+        <ion-icon name="car" slot="start"></ion-icon> TOMAR VIAJE
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

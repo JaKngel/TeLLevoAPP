@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar datos usuarios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/aprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let aux of usuarios">
+    <ion-item>
+      <ion-label>
+        <p>Tipo usuario: {{ aux.tipo }}</p>
+        <h2>{{ aux.email }}</h2>
+      </ion-label>
+      <ion-button
+        fill="outline"
+        color="secondary"
+        slot="end"
+        (click)="editarUser(aux.uid)"
+      >
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

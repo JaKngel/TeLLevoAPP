@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div style="display: flex; align-items: center;">
+        <img src="assets/TELLEVO.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+        <span>Seleccionar destinos</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/dprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Detalles del viaje -->
+  <ion-card *ngIf="viaje">
+    <ion-card-header>
+      <ion-card-title>Detalles del Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Inicio:</strong> {{ start }}</p>
+      <p><strong>Destino:</strong> {{ end }}</p>
+      <p><strong>Asientos Disponibles:</strong> {{ viaje.asientosDisponibles }}</p>
+      <p><strong>Asientos Disponibles:</strong> {{ viaje.estado }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Código QR del viaje -->
+  <ion-card *ngIf="viaje">
+    <ion-card-header>
+      <ion-card-title>Código QR del Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Generar el QR con la ID del viaje -->
+      <app-qr-code-generado [data]="viajeId ?? ''"></app-qr-code-generado>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" (click)="cancelarViaje()">
+          Cancelar Viaje
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="terminarViaje()">
+          Viaje Terminado
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Datos del Usuario:</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/uprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="!loading && userData">
+    <ion-card-header>
+      <div style="display: flex; align-items: center;">
+        <img
+          [src]="userData.img ? userData.img : 'assets/usuario.png'"
+          alt="Foto de perfil"
+          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 15px;"
+        >
+        <div>
+          <ion-card-title>{{ userData.nombre }} {{ userData.apellido }}</ion-card-title>
+          <ion-card-subtitle>{{ userData.tipo }}</ion-card-subtitle>
+        </div>
+      </div>
+    </ion-card-header>
+ 
+    <ion-card-content>
+      <ion-list>
+        
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon> 
+          <ion-label>Correo: {{ userData.email }}</ion-label> 
+        </ion-item>
+        <ion-item>
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>Dirección: {{ userData.direccion }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>Teléfono: {{ userData.telefono }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="loading">
+    <p>Cargando datos del usuario...</p>
+  </div>
+
+  <div *ngIf="!loading && !userData">
+    <p>No se encontraron datos para este usuario.</p>
+  </div>
+</ion-content>

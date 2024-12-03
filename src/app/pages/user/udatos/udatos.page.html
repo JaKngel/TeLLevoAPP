@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <div style="display: flex; align-items: center;">
+        <img src="assets/TELLEVO.png" alt="" style="height: 40px; margin-right: 10px;">
+        <span>Datos del Usuario</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/uprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h1>Actualiza tu Información</h1>
+        </ion-card-title>
+        <ion-card-subtitle class="ion-text-center">
+          Modifica los datos que deseas actualizar
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input formControlName="nombre" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Apellido</ion-label>
+          <ion-input formControlName="apellido" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Dirección</ion-label>
+          <ion-input formControlName="direccion" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Teléfono</ion-label>
+          <ion-input formControlName="telefono" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Imagen</ion-label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </ion-item>
+
+        <ion-item *ngIf="userForm.get('img')?.value">
+          <ion-label position="stacked">Imagen Actual</ion-label>
+          <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
+            <img [src]="userForm.get('img')?.value" alt="Imagen del usuario" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-left: 15px;" />
+          </div>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" [disabled]="!userForm.valid">
+          Actualizar Datos
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

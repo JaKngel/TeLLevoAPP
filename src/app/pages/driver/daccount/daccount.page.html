@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Datos del Conductor:</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/dprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="!loading && driverData">
+    <ion-card-header>
+      <div style="display: flex; align-items: center;">
+        <img
+          [src]="driverData.img ? driverData.img : 'assets/usuario.png'"
+          alt="Foto de perfil"
+          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 15px;"
+        >
+        <div>
+          <ion-card-title>{{ driverData.nombre }} {{ driverData.apellido }}</ion-card-title>
+          <h2>Conductor</h2>
+        </div>
+      </div>
+    </ion-card-header>
+ 
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="car-outline" slot="start"></ion-icon>
+          <ion-label>Placa: {{ driverData.placaVehiculo }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="car-sport-outline" slot="start"></ion-icon>
+          <ion-label>Vehículo: {{ driverData.tipoVehiculo }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-label>Correo: {{ driverData.email }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>Teléfono: {{ driverData.telefono }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="loading">
+    <p>Cargando datos del conductor...</p>
+  </div>
+
+  <div *ngIf="!loading && !driverData">
+    <p>No se encontraron datos para este conductor.</p>
+  </div>
+</ion-content>

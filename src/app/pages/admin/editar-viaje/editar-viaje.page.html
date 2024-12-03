@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar datos del viaje</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/aprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <form [formGroup]="editViajeForm" (ngSubmit)="updateViaje()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h1>Modificar Viaje</h1>
+        </ion-card-title>
+        <ion-card-subtitle class="ion-text-center">
+          Actualiza los datos del viaje
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre de inicio:</ion-label>
+          <ion-input formControlName="nombreInicio"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre de fin:</ion-label>
+          <ion-input formControlName="nombreFin"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Inicio:</ion-label>
+          <ion-input formControlName="inicio" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Fin:</ion-label>
+          <ion-input formControlName="fin" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Asientos disponibles:</ion-label>
+          <ion-input formControlName="asientosDisponibles" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Conductor ID:</ion-label>
+          <ion-input formControlName="conductorId"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Estado:</ion-label>
+          <ion-select formControlName="estado">
+            <ion-select-option value="activo">Activo</ion-select-option>
+            <ion-select-option value="terminado">Terminado</ion-select-option>
+            <ion-select-option value="cancelado">Cancelado</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-footer>
+        <ion-button
+          expand="block"
+          type="submit"
+          [disabled]="!editViajeForm.valid"
+        >Modificar</ion-button>
+      </ion-footer>
+    </ion-card>
+  </form>
+</ion-content>

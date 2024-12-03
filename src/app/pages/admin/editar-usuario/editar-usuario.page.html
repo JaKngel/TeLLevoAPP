@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar datos usuarios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/aprofile">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <form [formGroup]="editUserForm" (ngSubmit)="updateUser()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <h1>Modificar</h1>
+        </ion-card-title>
+        <ion-card-subtitle class="ion-text-center">
+          Actualiza los datos del usuario
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Email:</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre:</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Img:</ion-label>
+          <ion-input formControlName="img"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Tipo:</ion-label>
+          <ion-select
+            formControlName="tipo"
+            placeholder="Seleccionar"
+            interface="popover"
+          >
+            <ion-select-option value="Admin">Administrador</ion-select-option>
+            <ion-select-option value="User">Usuario</ion-select-option>
+            <ion-select-option value="Driver">Driver</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <img
+          [src]="editUserForm.get('img')?.value"
+          alt="Imagen del usuario"
+          style="
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 10px;
+          "
+        />
+      </ion-card-content>
+
+      <ion-footer>
+        <ion-button
+          expand="block"
+          type="submit"
+          [disabled]="!editUserForm.valid"
+          >Modificar</ion-button
+        >
+      </ion-footer>
+    </ion-card>
+  </form>
+</ion-content>

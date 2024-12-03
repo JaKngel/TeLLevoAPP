@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div style="display: flex; align-items: center;">
+        <img src="assets/TELLEVO.png" alt="" style="height: 40px; margin-right: 10px;">
+        <span>Bienvenidos a Te llevo app!</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Spinner de carga global mientras cargan los datos -->
+  <ion-spinner *ngIf="loading" name="crescent" color="primary" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></ion-spinner>
+
+  <!-- Tarjeta con información del usuario -->
+  <ion-card *ngIf="!loading">
+    <ion-card-content>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img [src]="userData?.img ? userData?.img : 'assets/usuario.png'" alt="Foto de perfil" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
+        <ion-card-title>{{ userData?.nombre }} {{ userData?.apellido }}</ion-card-title>
+        <h2>Cliente</h2>
+      </div>
+
+      <!-- Botones de ajustes -->
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" color="success" routerLink="/uaccount">
+              Datos
+              <ion-icon slot="end" name="wallet-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" color="tertiary" routerLink="/udatos">
+              Actualizar
+              <ion-icon slot="end" name="person-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="12">
+            <ion-button expand="block" color="danger" (click)="logout()">
+              Logout
+              <ion-icon slot="end" name="log-out-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mostrar si el usuario tiene un viaje activo -->
+  <ion-card *ngIf="viajeActivo">
+    <ion-card-header>
+      <ion-card-title style="text-align: center;">Viaje Activo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" color="primary" routerLink="/viajecreadou/{{ viajeActivo.id }}">
+        <ion-icon name="navigate-circle-outline" slot="start"></ion-icon>
+        Ver detalles del viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjeta para unirse a un viaje -->
+  <ion-card *ngIf="!viajeActivo">
+    <img alt="tellevo" src="assets/tellevo.jpg" class="small-image" />
+    <ion-card-header>
+      <ion-card-title>Únete a un Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Selecciona el viaje para unirte.</p>
+      <ion-button expand="full" color="success" routerLink="/uzonas" [disabled]="loading || viajeActivo">
+        <ion-icon name="boat-outline" slot="start"></ion-icon>
+        Unirse a un viaje
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
